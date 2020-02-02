@@ -6,20 +6,19 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
- 
-    public GameObject[] gases;
     public GameObject[] weatherEvents;
     public GameObject[] obstacles;
-    public GameObject cow;
+    public GameObject[] particles;
+    public GameObject cloud;
 
     public Canvas myCanvas;
     public Text pointsText;
-    public Text rainAnnounce;
-    public Text hailAnnounce;
 
     private bool gameDone;
     private bool canSpawnWeather = true;
     private bool canSpawnObstacle = true;
+    private bool canSpawnCloud = true;
+    private bool canSpawnParticle = true;
 
     public Text[] weatherWarnings;
 
@@ -47,8 +46,20 @@ public class GameController : MonoBehaviour
 
             if (canSpawnObstacle)
             {
+                int particleType = Random.Range(0, 2);
                 canSpawnObstacle = false;
-                StartCoroutine(SpawnCow());
+                StartCoroutine(SpawnObstacles(particleType));
+            }
+            if (canSpawnCloud)
+            {
+                canSpawnCloud = false;
+                StartCoroutine(SpawnCloud());
+            }
+            if (canSpawnParticle)
+            {
+                int particleType = Random.Range(0, 4);
+                canSpawnParticle = false;
+                StartCoroutine(SpawnParticles(particleType));
             }
         }
     }
@@ -80,13 +91,32 @@ public class GameController : MonoBehaviour
         return weatherNum;
     }
 
-    IEnumerator SpawnCow()
+    IEnumerator SpawnObstacles(int type)
     {
-        Vector3 position = new Vector3(Random.Range(-7.59f, 7.14f), 30.2f, 0.0f);
-        Instantiate(cow, position, Quaternion.identity);
+        Vector3 position = new Vector3(Random.Range(-7.59f, 7.14f), 10.01f, 0.0f);
+        Instantiate(obstacles[type], position, Quaternion.identity);
         int time = Random.Range(2, 5);
         yield return new WaitForSecondsRealtime(time);
         canSpawnObstacle = true;
     }
+
+    IEnumerator SpawnCloud()
+    {
+        Vector3 position = new Vector3(Random.Range(-7.59f, 7.14f), 10.01f, 0.0f);
+        Instantiate(cloud, position, Quaternion.identity);
+        int time = Random.Range(1, 2);
+        yield return new WaitForSecondsRealtime(1);
+        canSpawnCloud = true;
+    }
+
+    IEnumerator SpawnParticles(int type)
+    {
+        Vector3 position = new Vector3(Random.Range(-7.59f, 7.14f), 10.01f, 0.0f);
+        Instantiate(particles[type], position, Quaternion.identity);
+        int time = Random.Range(1, 2);
+        yield return new WaitForSecondsRealtime(time);
+        canSpawnParticle = true;
+    }
+
 
 }

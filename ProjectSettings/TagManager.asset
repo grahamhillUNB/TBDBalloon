@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - rain
-  tags:
-  - Yellow
-  - Blue
   - Red
   - White
+  - Blue
+  - Yellow
+  - obstacle
   layers:
   - Default
   - TransparentFX
