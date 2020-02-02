@@ -13,11 +13,13 @@ public class Movement : MonoBehaviour
     private TextMesh text;
     private int particleCount;
     private int yellowCount;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start() {
         ScreenWidth = Screen.width;
         characterBody = character.GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         pushAmount = 0.0f;
         text = counter.GetComponent<TextMesh>();
         particleCount = 0;
@@ -84,5 +86,26 @@ public class Movement : MonoBehaviour
     void StopShake(){
         CancelInvoke("BeginShake");
         transform.position = new Vector3(Pos.x, -3.97f, 0);
+    }
+
+     public void OnTriggerEnter2D(Collider2D collider) {
+        if(collider.gameObject.tag == "Obstacle") {
+            Destroy(gameObject);
+            return;
+        }
+        if(collider.gameObject.tag == "White") {
+            anim.Play("White");
+        }
+        if(collider.gameObject.tag == "Red") {
+            anim.Play("Red");
+        }
+        if(collider.gameObject.tag == "Yellow") {
+            anim.Play("Yellow");
+        }
+        if(collider.gameObject.tag == "Blue") {
+            anim.Play("Blue");
+        }
+        //controllerScript.particlePoints++;
+        Destroy(collider.gameObject);
     }
 }

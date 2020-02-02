@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5779285534192048310}
   - component: {fileID: -1546224430332603608}
   - component: {fileID: 6402896552006528478}
-  - component: {fileID: 4471929589025710219}
+  - component: {fileID: 2221127394099032863}
   m_Layer: 0
   m_Name: Red Particle
   m_TagString: Red
@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb35c86f26f5fcb43bee183f8437ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &4471929589025710219
-BoxCollider2D:
+--- !u!58 &2221127394099032863
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -82,18 +82,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.15
 --- !u!1 &5779285534216330480
 GameObject:
   m_ObjectHideFlags: 0

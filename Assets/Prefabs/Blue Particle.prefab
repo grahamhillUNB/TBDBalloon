@@ -4846,7 +4846,7 @@ GameObject:
   - component: {fileID: 1546801053868011082}
   - component: {fileID: -1058788600640580605}
   - component: {fileID: 1697001419950887268}
-  - component: {fileID: -5854279919327818456}
+  - component: {fileID: 267733680636772650}
   m_Layer: 0
   m_Name: Blue Particle
   m_TagString: Blue
@@ -4903,8 +4903,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb35c86f26f5fcb43bee183f8437ad87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &-5854279919327818456
-BoxCollider2D:
+--- !u!58 &267733680636772650
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4917,15 +4917,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.15
