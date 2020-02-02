@@ -12,7 +12,6 @@ public class GameController : MonoBehaviour
     public GameObject cloud;
 
     public Canvas myCanvas;
-    public Text pointsText;
 
     private bool gameDone;
     private bool canSpawnWeather = true;
@@ -22,13 +21,10 @@ public class GameController : MonoBehaviour
 
     public Text[] weatherWarnings;
 
-    private int particlePoints;
     // Start is called before the first frame update
     void Start()
     {
         gameDone = false;
-        particlePoints = 0;
-        pointsText.text = "Points: " + particlePoints.ToString();
     }
 
     // Update is called once per frame
@@ -36,7 +32,6 @@ public class GameController : MonoBehaviour
     {
         if (!gameDone)
         {
-            updatePoints();
             if (canSpawnWeather)
             {
                 int weatherType = weatherRoulette();
@@ -62,11 +57,6 @@ public class GameController : MonoBehaviour
                 StartCoroutine(SpawnParticles(particleType));
             }
         }
-    }
-
-    void updatePoints()
-    {
-        pointsText.text = "Points: " + particlePoints.ToString();
     }
 
     IEnumerator SpawnWeatherWarning(int weatherType)

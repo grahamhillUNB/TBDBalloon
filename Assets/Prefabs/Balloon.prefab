@@ -155,7 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 1388412590132705853}
-  speed: 0
+  speed: 3
+  pushAmount: 0.05
 --- !u!95 &1388412590132705849
 Animator:
   serializedVersion: 3
