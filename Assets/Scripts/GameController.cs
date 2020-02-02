@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public GameObject[] obstacles;
     public GameObject cow;
 
+    public Canvas myCanvas;
     public Text pointsText;
     public Text rainAnnounce;
     public Text hailAnnounce;
@@ -19,6 +20,8 @@ public class GameController : MonoBehaviour
     private bool gameDone;
     private bool canSpawnWeather = true;
     private bool canSpawnObstacle = true;
+
+    public Text[] weatherWarnings;
 
     private int particlePoints;
     // Start is called before the first frame update
@@ -32,16 +35,14 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int weatherType = weatherRoulette();
-
-
         if (!gameDone)
         {
             updatePoints();
             if (canSpawnWeather)
             {
+                int weatherType = weatherRoulette();
                 canSpawnWeather = false;
-                StartCoroutine(SpawnWeather(weatherType));
+                StartCoroutine(SpawnWeatherWarning(weatherType));
             }
 
             if (canSpawnObstacle)
@@ -57,12 +58,18 @@ public class GameController : MonoBehaviour
         pointsText.text = "Points: " + particlePoints.ToString();
     }
 
+    IEnumerator SpawnWeatherWarning(int weatherType)
+    {
+        Instantiate(weatherWarnings[weatherType], myCanvas.transform);
+        yield return new WaitForSecondsRealtime(5);
+        StartCoroutine(SpawnWeather(weatherType));
+    }
+
     IEnumerator SpawnWeather(int weatherType)
     {
-        print(weatherType);
         Instantiate(weatherEvents[weatherType]);
 
-        int time = Random.Range(20, 30);
+        int time = Random.Range(10, 20);
         yield return new WaitForSecondsRealtime(time);
         canSpawnWeather = true;
     }
@@ -82,15 +89,4 @@ public class GameController : MonoBehaviour
         canSpawnObstacle = true;
     }
 
-    /*void weatherAnnounce(int type)
-    {
-        if (type == 0)
-        {
-            hailAnnounce.text = "It's about to hail!";
-        }
-        else if (type == 1)
-        {
-            rainAnnounce.text = "It's about to rain!";
-        }
-    }*/
 }
