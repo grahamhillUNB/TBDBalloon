@@ -42,6 +42,7 @@ public class Movement : MonoBehaviour
         float rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
     	if(horizontalInput < 0f && characterBody.position.x > leftBorder + width/2 || horizontalInput > 0f && characterBody.position.x < rightBorder - width/2) {
             character.transform.Translate(new Vector2(horizontalInput, characterBody.velocity.y) * Time.deltaTime);
+            Debug.Log("I am Moving");
         }
         else {
             characterBody.velocity = new Vector2(0f, characterBody.velocity.y);
