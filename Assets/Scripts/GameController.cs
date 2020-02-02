@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
  
     public GameObject[] gases;
     public GameObject[] weatherEvents;
+    public GameObject[] obstacles;
+    public GameObject cow;
 
     public Text pointsText;
     public Text rainAnnounce;
@@ -16,6 +18,7 @@ public class GameController : MonoBehaviour
 
     private bool gameDone;
     private bool canSpawnWeather = true;
+    private bool canSpawnObstacle = true;
 
     private int particlePoints;
     // Start is called before the first frame update
@@ -40,6 +43,12 @@ public class GameController : MonoBehaviour
                 canSpawnWeather = false;
                 StartCoroutine(SpawnWeather(weatherType));
             }
+
+            if (canSpawnObstacle)
+            {
+                canSpawnObstacle = false;
+                StartCoroutine(SpawnCow());
+            }
         }
     }
 
@@ -51,8 +60,9 @@ public class GameController : MonoBehaviour
     IEnumerator SpawnWeather(int weatherType)
     {
         print(weatherType);
-        int time = Random.Range(20,30);
         Instantiate(weatherEvents[weatherType]);
+
+        int time = Random.Range(20, 30);
         yield return new WaitForSecondsRealtime(time);
         canSpawnWeather = true;
     }
@@ -61,6 +71,15 @@ public class GameController : MonoBehaviour
     {
         int weatherNum = Random.Range(0, 2);
         return weatherNum;
+    }
+
+    IEnumerator SpawnCow()
+    {
+        Vector3 position = new Vector3(Random.Range(-7.59f, 7.14f), 30.2f, 0.0f);
+        Instantiate(cow, position, Quaternion.identity);
+        int time = Random.Range(2, 5);
+        yield return new WaitForSecondsRealtime(time);
+        canSpawnObstacle = true;
     }
 
     /*void weatherAnnounce(int type)
