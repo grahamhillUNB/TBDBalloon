@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
     {
         Instantiate(weatherWarnings[weatherType]);
         yield return new WaitForSecondsRealtime(5);
-        StartCoroutine(SpawnWeather(2));
+        StartCoroutine(SpawnWeather(weatherType));
     }
 
     IEnumerator SpawnWeather(int weatherType)
