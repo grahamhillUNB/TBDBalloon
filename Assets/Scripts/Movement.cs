@@ -96,7 +96,13 @@ public class Movement : MonoBehaviour
             }
             return;
         }
-        if(collider.gameObject.tag == "White") {
+        if (collider.gameObject.tag == "thunder")
+        {
+            print("im here");
+            particleCount = particleCount - yellowCount;
+            yellowCount = 0;
+        }
+        if (collider.gameObject.tag == "White") {
             Destroy(collider.gameObject);
             anim.Play("White");
             particleCount++;

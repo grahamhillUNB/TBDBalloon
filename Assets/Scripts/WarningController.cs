@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class RainAnnounce : MonoBehaviour
+public class WarningController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,6 +15,6 @@ public class RainAnnounce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

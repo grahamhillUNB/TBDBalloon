@@ -10,7 +10,10 @@ public class GameController : MonoBehaviour
     public GameObject[] obstacles;
     public GameObject[] particles;
     public GameObject cloud;
+    public GameObject thunder;
 
+    public int thunderBuffer;
+    public int timeSinceLoad;
     public Canvas myCanvas;
 
     private bool gameDone;
@@ -18,8 +21,9 @@ public class GameController : MonoBehaviour
     private bool canSpawnObstacle = true;
     private bool canSpawnCloud = true;
     private bool canSpawnParticle = true;
+    private bool canSpawnThunder = false;
 
-    public Text[] weatherWarnings;
+    public GameObject[] weatherWarnings;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +34,8 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeSinceLoad = (int)Time.timeSinceLevelLoad;
+        
         if (!gameDone)
         {
             if (canSpawnWeather)
@@ -45,7 +51,7 @@ public class GameController : MonoBehaviour
                 canSpawnObstacle = false;
                 StartCoroutine(SpawnObstacles(particleType));
             }
-            if (canSpawnCloud)
+            if (canSpawnCloud && !canSpawnThunder)
             {
                 canSpawnCloud = false;
                 StartCoroutine(SpawnCloud());
@@ -61,23 +67,47 @@ public class GameController : MonoBehaviour
 
     IEnumerator SpawnWeatherWarning(int weatherType)
     {
-        Instantiate(weatherWarnings[weatherType], myCanvas.transform);
+        Instantiate(weatherWarnings[weatherType]);
         yield return new WaitForSecondsRealtime(5);
-        StartCoroutine(SpawnWeather(weatherType));
+        StartCoroutine(SpawnWeather(2));
     }
 
     IEnumerator SpawnWeather(int weatherType)
     {
-        Instantiate(weatherEvents[weatherType]);
+        if(weatherType < 2)
+        {
+            Instantiate(weatherEvents[weatherType]);
+        }
+        else
+        {
+            canSpawnThunder = true;
+            Instantiate(weatherEvents[0]);
+            InvokeRepeating("SpawnThunder", 0, 1);
+        }
 
         int time = Random.Range(10, 20);
         yield return new WaitForSecondsRealtime(time);
         canSpawnWeather = true;
+        canSpawnThunder = false;
+    }
+
+    void SpawnThunder()
+    {
+        if (canSpawnThunder)
+        {
+            Vector3 position = new Vector3(Random.Range(-1.8f, 2.15f), 8.01f, 0.0f);
+            Instantiate(thunder, position, Quaternion.identity);
+        }
+        else
+        {
+            CancelInvoke("SpawnThunder");
+        }
     }
 
     int weatherRoulette()
     {
-        int weatherNum = Random.Range(0, 2);
+        int weatherNum = Random.Range(0, 3);
+        Debug.Log(weatherNum.ToString());
         return weatherNum;
     }
 
