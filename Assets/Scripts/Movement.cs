@@ -53,7 +53,7 @@ public class Movement : MonoBehaviour
         }
         updateCount();
 
-        if(particleCount >= 2 && game){
+        if(particleCount >= 60 && game){
             game = false;
             if(changer != null){
                 changer.GetComponent<SceneChanger>().LoadLevel("Win");
