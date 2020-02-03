@@ -1,21 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class RainAnnounce : MonoBehaviour
+public class ThunderController : MonoBehaviour
 {
+    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        int delay = 5;
-
-        Destroy(gameObject, delay);
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        rb.velocity = new Vector3(0, -5, 0);
     }
 }
