@@ -870,9 +870,8 @@ MonoBehaviour:
   - {fileID: 2141705304440688356, guid: c373129c11bb725479badc39094958df, type: 3}
   - {fileID: 0}
   obstacles:
-  - {fileID: 7625549898403984055, guid: 0ea7235d592539b4f959d79c83aac0e7, type: 3}
-  - {fileID: 646749605858019545, guid: 94eb8a70230a88c4fab8d0e54e8aecc5, type: 3}
-  - {fileID: 0}
+  - {fileID: 8569203501594277709, guid: 0ea7235d592539b4f959d79c83aac0e7, type: 3}
+  - {fileID: 7053809586541874341, guid: 94eb8a70230a88c4fab8d0e54e8aecc5, type: 3}
   particles:
   - {fileID: 1546801053868011083, guid: c9e19f8205bcdd44893bf70323a36533, type: 3}
   - {fileID: 5779285534192048308, guid: 231b36d53baba2546a60d58b039c2873, type: 3}

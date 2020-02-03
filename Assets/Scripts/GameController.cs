@@ -83,16 +83,16 @@ public class GameController : MonoBehaviour
 
     IEnumerator SpawnObstacles(int type)
     {
-        Vector3 position = new Vector3(Random.Range(-7.59f, 7.14f), 10.01f, 0.0f);
+        Vector3 position = new Vector3(Random.Range(-1.8f, 2.15f), 10.01f, 0.0f);
         Instantiate(obstacles[type], position, Quaternion.identity);
-        int time = Random.Range(2, 5);
+        int time = Random.Range(2, 3);
         yield return new WaitForSecondsRealtime(time);
         canSpawnObstacle = true;
     }
 
     IEnumerator SpawnCloud()
     {
-        Vector3 position = new Vector3(Random.Range(-7.59f, 7.14f), 10.01f, 1.0f);
+        Vector3 position = new Vector3(Random.Range(-1.8f, 3.14f), 10.01f, 1.0f);
         Instantiate(cloud, position, Quaternion.identity);
         int time = Random.Range(1, 2);
         yield return new WaitForSecondsRealtime(1);
@@ -101,7 +101,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator SpawnParticles(int type)
     {
-        Vector3 position = new Vector3(Random.Range(-7.59f, 7.14f), 10.01f, 0.0f);
+        Vector3 position = new Vector3(Random.Range(-1.8f, 2.15f), 10.01f, 0.0f);
         Instantiate(particles[type], position, Quaternion.identity);
         int time = Random.Range(1, 2);
         yield return new WaitForSecondsRealtime(time);
