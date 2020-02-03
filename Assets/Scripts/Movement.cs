@@ -14,9 +14,11 @@ public class Movement : MonoBehaviour
     private int particleCount;
     private int yellowCount;
     private Animator anim;
+    private GameObject changer;
 
     // Start is called before the first frame update
     void Start() {
+        changer = GameObject.Find("SceneManager");
         ScreenWidth = Screen.width;
         characterBody = character.GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -42,12 +44,19 @@ public class Movement : MonoBehaviour
             pushDown(pushAmount, 0.1f);
         }
         if(GameObject.Find("Rain(Clone)") != null && anim.GetCurrentAnimatorStateInfo(0).IsName("Blue")){
-            speed = 1.5f;
+            speed = 0.75f;
         }
         else if(GameObject.Find("Rain(Clone)") == null && !anim.GetCurrentAnimatorStateInfo(0).IsName("Blue")){
-            speed = 3.0f;
+            speed = 1.8f;
         }
         updateCount();
+
+        if(particleCount >= 60){
+            if(changer != null){
+                Time.timeScale = 0;
+                changer.GetComponent<SceneChanger>().LoadLevel("Win");
+            }
+        }
     }
     void FixedUpdate() {
     	#if UNITY_EDITOR
