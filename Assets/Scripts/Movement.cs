@@ -15,9 +15,11 @@ public class Movement : MonoBehaviour
     private int yellowCount;
     private Animator anim;
     private GameObject changer;
+    private bool game;
 
     // Start is called before the first frame update
     void Start() {
+        game = true;
         changer = GameObject.Find("SceneManager");
         ScreenWidth = Screen.width;
         characterBody = character.GetComponent<Rigidbody2D>();
@@ -51,9 +53,9 @@ public class Movement : MonoBehaviour
         }
         updateCount();
 
-        if(particleCount >= 60){
+        if(particleCount >= 60 && game){
+            game = false;
             if(changer != null){
-                Time.timeScale = 0;
                 changer.GetComponent<SceneChanger>().LoadLevel("Win");
             }
         }
