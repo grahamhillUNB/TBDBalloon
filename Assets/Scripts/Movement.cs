@@ -88,8 +88,8 @@ public class Movement : MonoBehaviour
     }
 
      public void OnTriggerEnter2D(Collider2D collider) {
-        if(collider.gameObject.tag == "Obstacle") {
-            Destroy(gameObject);
+        if(collider.gameObject.tag == "obstacle") {
+            Destroy(collider.gameObject);
             particleCount -= 3;
             if(particleCount <= 0){
                 particleCount = 0;
