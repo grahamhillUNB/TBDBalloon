@@ -20,7 +20,6 @@ public class Movement : MonoBehaviour
         ScreenWidth = Screen.width;
         characterBody = character.GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        pushAmount = 0.0f;
         text = counter.GetComponent<TextMesh>();
         particleCount = 0;
         yellowCount = 0;
@@ -42,12 +41,13 @@ public class Movement : MonoBehaviour
         if(GameObject.Find("Hail(Clone)") != null){
             pushDown(pushAmount, 0.1f);
         }
-        if(GameObject.Find("Rain(Clone)") != null && gameObject.GetComponent<SpriteRenderer>().color == Color.blue){
-            speed = 2.0f;
+        if(GameObject.Find("Rain(Clone)") != null && anim.GetCurrentAnimatorStateInfo(0).IsName("Blue")){
+            speed = 1.5f;
         }
-        else if(GameObject.Find("Rain(Clone)") == null && gameObject.GetComponent<SpriteRenderer>().color != Color.blue){
+        else if(GameObject.Find("Rain(Clone)") == null && !anim.GetCurrentAnimatorStateInfo(0).IsName("Blue")){
             speed = 3.0f;
         }
+        updateCount();
     }
     void FixedUpdate() {
     	#if UNITY_EDITOR
@@ -82,30 +82,43 @@ public class Movement : MonoBehaviour
             transform.position = Pos;
         }
     }
-
     void StopShake(){
         CancelInvoke("BeginShake");
-        transform.position = new Vector3(Pos.x, -3.97f, 0);
+        transform.position = new Vector3(Pos.x, -3.43f, 0);
     }
 
      public void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.tag == "Obstacle") {
             Destroy(gameObject);
+            particleCount -= 3;
+            if(particleCount <= 0){
+                particleCount = 0;
+            }
             return;
         }
         if(collider.gameObject.tag == "White") {
+            Destroy(collider.gameObject);
             anim.Play("White");
+            particleCount++;
         }
         if(collider.gameObject.tag == "Red") {
+            Destroy(collider.gameObject);
             anim.Play("Red");
+            particleCount++;
         }
         if(collider.gameObject.tag == "Yellow") {
+            Destroy(collider.gameObject);
             anim.Play("Yellow");
+            yellowCount++;
+            particleCount++;
         }
         if(collider.gameObject.tag == "Blue") {
+            Destroy(collider.gameObject);
             anim.Play("Blue");
+            particleCount++;
         }
-        //controllerScript.particlePoints++;
-        Destroy(collider.gameObject);
+    }
+    void updateCount(){
+        text.text = "Particles Collected: "+ particleCount;
     }
 }

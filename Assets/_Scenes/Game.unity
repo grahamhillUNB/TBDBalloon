@@ -466,28 +466,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &359541435 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1388412590132705853, guid: f637032c131fe7d47bfe845964e5f46a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1388412591242771455}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &359541437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 359541435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42505b5c13f9d4daa9d1e2b48a900369, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character: {fileID: 359541435}
-  counter: {fileID: 327365142}
-  speed: 3
-  pushAmount: 0.02
 --- !u!1 &515873217
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,10 +716,10 @@ RectTransform:
   m_Father: {fileID: 214423730}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -61, y: -57}
-  m_SizeDelta: {x: 160, y: 100}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 314.9, y: -43}
+  m_SizeDelta: {x: 629.8, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &998722161
 MonoBehaviour:
@@ -756,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.025542913, g: 0.7735849, b: 0.19450575, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -774,7 +752,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: To fix the atmosphere, Absorb 100 Greenhouse gasses and do your part!
 --- !u!222 &998722162
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1279,6 +1257,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Balloon
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1388412590132705852, guid: f637032c131fe7d47bfe845964e5f46a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f637032c131fe7d47bfe845964e5f46a, type: 3}

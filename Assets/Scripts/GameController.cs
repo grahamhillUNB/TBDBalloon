@@ -92,7 +92,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator SpawnCloud()
     {
-        Vector3 position = new Vector3(Random.Range(-7.59f, 7.14f), 10.01f, 0.0f);
+        Vector3 position = new Vector3(Random.Range(-7.59f, 7.14f), 10.01f, 1.0f);
         Instantiate(cloud, position, Quaternion.identity);
         int time = Random.Range(1, 2);
         yield return new WaitForSecondsRealtime(1);
