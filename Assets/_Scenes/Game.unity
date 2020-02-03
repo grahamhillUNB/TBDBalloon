@@ -626,7 +626,8 @@ PrefabInstance:
         type: 3}
       propertyPath: music
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5461975976236025793, guid: e34a2f6661abd6c429e06b1be296f39d,
+        type: 3}
     - target: {fileID: 5335785368154097969, guid: 2c1db627cb7bf22499f509dc6b02a9a4,
         type: 3}
       propertyPath: m_Name
@@ -952,9 +953,6 @@ MonoBehaviour:
   - {fileID: 6909573322583124253, guid: c46b0dedac5a7424a8c270f37cb15447, type: 3}
   cloud: {fileID: 459180819159320482, guid: ac6bc1a1de9848242840c4f74d8b45d3, type: 3}
   thunder: {fileID: 8145299222194503728, guid: 6acaa847c86ebee4cb9548724ffab5d5, type: 3}
-  thunderBuffer: 0
-  timeSinceLoad: 0
-  myCanvas: {fileID: 214423729}
   weatherWarnings:
   - {fileID: 9124475908390294850, guid: 16b30f0e4e76e8148accc71d4b42c45d, type: 3}
   - {fileID: 1844217489277236680, guid: 6684cd424b313f1468534b64e3626147, type: 3}

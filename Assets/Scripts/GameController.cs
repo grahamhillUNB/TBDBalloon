@@ -11,10 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject[] particles;
     public GameObject cloud;
     public GameObject thunder;
-
-    public int thunderBuffer;
-    public int timeSinceLoad;
-    public Canvas myCanvas;
+    private int thunderCount;
 
     private bool gameDone;
     private bool canSpawnWeather = true;
@@ -33,9 +30,7 @@ public class GameController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        timeSinceLoad = (int)Time.timeSinceLevelLoad;
-        
+    {    
         if (!gameDone)
         {
             if (canSpawnWeather)
@@ -93,14 +88,17 @@ public class GameController : MonoBehaviour
 
     void SpawnThunder()
     {
-        if (canSpawnThunder)
+        thunderCount = 0;
+        if (canSpawnThunder && thunderCount < 2)
         {
-            Vector3 position = new Vector3(Random.Range(-1.8f, 2.15f), 8.01f, 0.0f);
+            Vector3 position = new Vector3(Random.Range(-1.8f, 2.15f), 10.01f, 0.0f);
             Instantiate(thunder, position, Quaternion.identity);
+            thunderCount++;
         }
         else
         {
             CancelInvoke("SpawnThunder");
+            thunderCount = 0;
         }
     }
 

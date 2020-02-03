@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Students In Debt And Hopelessness Games Inc.
+  companyName: Students In Debt And Hopelessness Games Inc
   productName: Environment Balloon
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
