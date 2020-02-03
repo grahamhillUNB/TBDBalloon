@@ -53,7 +53,7 @@ public class Movement : MonoBehaviour
         }
         updateCount();
 
-        if(particleCount >= 60 && game){
+        if(particleCount >= 2 && game){
             game = false;
             if(changer != null){
                 changer.GetComponent<SceneChanger>().LoadLevel("Win");
@@ -109,9 +109,12 @@ public class Movement : MonoBehaviour
         }
         if (collider.gameObject.tag == "thunder")
         {
-            print("im here");
-            particleCount = particleCount - yellowCount;
-            yellowCount = 0;
+            Destroy(collider.gameObject);
+            particleCount -= 3;
+            if(anim.GetCurrentAnimatorStateInfo(0).IsName("Yellow")){
+                particleCount -= yellowCount;
+                yellowCount = 0;
+            }
         }
         if (collider.gameObject.tag == "White") {
             Destroy(collider.gameObject);
